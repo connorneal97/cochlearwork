@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Medical Data and Operations Analyst — Role Visual</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --muted:#aeb8d4;
+      --text:#eef2ff;
+      --good:#35d07f;
+      --progress:#ffb347;
+      --line: rgba(255,255,255,.14);
+      --card: rgba(255,255,255,.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 700px at 15% 10%, rgba(122,162,255,.18), transparent 60%),
+                  radial-gradient(900px 600px at 90% 30%, rgba(53,208,127,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      padding:34px;
+    }
+    .wrap{max-width:1240px;margin:0 auto}
+
+    header{
+      text-align:center;
+      margin-bottom:28px;
+    }
+    h1{
+      margin:0;
+      font-size:32px;
+      font-weight:800;
+      letter-spacing:.4px;
+    }
+    .subtitle{
+      color:var(--muted);
+      font-size:16px;
+      margin-top:8px;
+    }
+
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:20px;
+      background: var(--card);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+    }
+
+    /* default h2 */
+    h2{
+      margin:0 0 14px;
+      font-size:18px;
+      font-weight:700;
+      color:#ffffff;
+    }
+
+    /* FORCE: Chart titles centered + bold */
+    .chart-title{
+      text-align:center !important;
+      font-weight:900 !important;
+      letter-spacing:.2px;
+      margin:0 0 14px !important;
+      width:100%;
+      display:block;
+    }
+
+    /* FORCE: Section titles centered + underlined */
+    .section-title{
+      text-align:center !important;
+      font-weight:900 !important;
+      text-decoration: underline !important;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+      margin:16px 0 10px !important;
+      font-size:18px;
+      color:#ffffff;
+      width:100%;
+      display:block;
+    }
+
+    .section-divider{
+      margin:18px 0;
+      height:1px;
+      background: var(--line);
+    }
+
+    ul{margin:8px 0 0 20px;padding:0;font-size:15px}
+    li{margin:8px 0;line-height:1.45}
+
+    /* make sure canvases don’t behave oddly in some layouts */
+    canvas{display:block; width:100%}
+
+    #pieChart{height:460px !important}
+    #barChart{height:360px !important}
+
+    .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+    @media (max-width:980px){.two-col{grid-template-columns:1fr}}
+
+    .completed{color:var(--good);font-weight:800}
+    .in-progress{color:var(--progress);font-weight:800}
+
+    .label-muted{
+      margin-top:14px;
+      font-size:13px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-weight:700;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Medical Data and Operations Analyst</h1>
+  <div class="subtitle">Role mix, weekly time allocation, and project portfolio</div>
+</header>
+
+<div class="grid">
+  <div class="card">
+    <h2 class="chart-title">Role Breakdown (%)</h2>
+    <canvas id="pieChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2 class="chart-title">Weekly Time Allocation (Hours)</h2>
+    <canvas id="barChart"></canvas>
+  </div>
+</div>
+
+<div class="two-col">
+
+  <div class="card">
+    <div class="section-title">Data — Core Responsibilities</div>
+    <ul>
+      <li><b>Data Analysis</b> — Comprehensive medical and operational analysis</li>
+      <li><b>Trend Forecasting</b> — Identifying patterns and future demand</li>
+      <li><b>Data Lifecycle Management</b> — Quality, integrity, governance</li>
+      <li><b>Reporting &amp; Insights</b> — Structured reporting and visualization</li>
+      <li><b>Data Governance</b> — Standards, policy, and compliance</li>
+      <li><b>Performance Metrics</b> — KPI development and monitoring</li>
+    </ul>
+
+    <div class="section-divider"></div>
+
+    <div class="section-title">Systems &amp; Automation</div>
+    <ul>
+      <li>AWS and Salesforce platform changes</li>
+      <li>Call QA Generative AI tools and forms</li>
+      <li>Clark + CoPilot AI use cases</li>
+      <li>Partnering on AI agent development</li>
+      <li>Automating CHC process flows</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Projects</h2>
+
+    <div class="label-muted">Completed</div>
+    <ul>
+      <li><span class="completed">MRI Transition</span> — Transition of MRI duties to the AOC team including call volume, training, and operational ownership</li>
+      <li><span class="completed">Software Transition</span> — Transition of Software responsibilities from Medical Affairs to Connected Care for improved placement</li>
+      <li><span class="completed">Call QA</span> — Automation of the Call Quality Assurance project for Generative AI use in the QA process</li>
+      <li><span class="completed">Historical Data Project</span> — Comprehensive tracking of 10 years of CRM data to denote product launch volume, busy time volume, and product issues as it relates to AOC support</li>
+    </ul>
+
+    <div class="label-muted">In Progress</div>
+    <ul>
+      <li><span class="in-progress">Scheduled Audiology Support Expansion</span> — Expanding access and utilization of Scheduled Audiology Support</li>
+      <li><span class="in-progress">VA Audiology Support</span> — Larger adoption and better support for the VA’s Audiology Support needs</li>
+      <li><span class="in-progress">CHC Database</span> — Increasing feasibility of a single database for research use, patient outcome tracking, and improved CHC data management</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+
+<script>
+  Chart.register(ChartDataLabels);
+
+  Chart.defaults.color = "#ffffff";
+  Chart.defaults.font.weight = "700";
+  Chart.defaults.font.size = 14;
+
+  new Chart(pieChart, {
+    type:"pie",
+    data:{
+      labels:["Data","Projects","Systems & Automation"],
+      datasets:[{data:[50,25,25],borderWidth:2}]
+    },
+    options:{
+      maintainAspectRatio:false,
+      plugins:{
+        legend:{position:"right"},
+        datalabels:{
+          formatter:v=>v+"%",
+          font:{size:18,weight:"900"},
+          color:"#fff"
+        }
+      }
+    }
+  });
+
+  new Chart(barChart, {
+    type:"bar",
+    data:{
+      labels:["Data","Systems & Automation","Projects"],
+      datasets:[{data:[20,10,10],borderWidth:2}]
+    },
+    options:{
+      maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        datalabels:{
+          formatter:v=>v+"h",
+          font:{size:16,weight:"900"},
+          color:"#fff"
+        }
+      },
+      scales:{y:{beginAtZero:true}}
+    }
+  });
+</script>
+
+</body>
+</html>
